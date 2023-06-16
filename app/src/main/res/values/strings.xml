@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">StoryApp</string>
+    <string name="txt_login_intro">Halo,\nSilahkan login di sini</string>
+    <string name="txt_register_intro">Halo,\nSilahkan register di sini</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_email_invalid">Email Tidak Valid</string>
+    <string name="txt_password">Password</string>
+    <string name="password_error">Password harus 8 karakter</string>
+    <string name="txt_password_invalid">Email Tidak Valid</string>
+    <string name="txt_login_new_register">Belum punya akun ? </string>
+    <string name="txt_login_new_register_click">klik disini</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_register">Register</string>
+    <string name="txt_add_story">Tambah Story</string>
+    <string name="txt_galery">Galeri</string>
+    <string name="txt_camera">Kamera</string>
+    <string name="txt_desc_image">Masukkan Deskripsi Gambar</string>
+    <string name="txt_upload">Upload</string>
+    <string name="txt_image_preview">Tampilan Gambar</string>
+    <string name="txt_info">info</string>
+    <string name="txt_headline">judul</string>
+    <string name="txt_desc">deskripsi</string>
+    <string name="txt_close">Logout</string>
+    <string name="txt_image">Gambar</string>
+</resources>
