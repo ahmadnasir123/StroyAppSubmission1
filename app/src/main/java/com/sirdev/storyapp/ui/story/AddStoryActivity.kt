@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.sirdev.storyapp.MainActivity
 import com.sirdev.storyapp.data.remote.WebService
 import com.sirdev.storyapp.data.remote.response.stories.AddStoryResponse
@@ -32,7 +34,7 @@ import java.io.File
 
 class AddStoryActivity : AppCompatActivity() {
     private lateinit var activityAddStoryBinding: ActivityAddStoryBinding
-
+    private lateinit var addStoryViewModel: AddStoryViewModel
     private lateinit var currentPath: String
     private lateinit var userLoginPref: Preferences
 
@@ -44,6 +46,16 @@ class AddStoryActivity : AppCompatActivity() {
         setContentView(activityAddStoryBinding.root)
         userLoginPref = Preferences(this)
         supportActionBar?.title = "Upload Story"
+        addStoryViewModel = ViewModelProvider(this).get(AddStoryViewModel::class.java)
+        // Perhatikan status unggahan dari ViewModel
+        addStoryViewModel.uploadStatus.observe(this, Observer { isSuccessful ->
+            if (isSuccessful) {
+                Toast.makeText(this, "Unggahan berhasil", Toast.LENGTH_LONG).show()
+                onBackPressed()
+            } else {
+                Toast.makeText(this, "Unggahan gagal", Toast.LENGTH_LONG).show()
+            }
+        })
         initView()
     }
 
@@ -149,8 +161,11 @@ class AddStoryActivity : AppCompatActivity() {
                 requestImageFile
             )
 
+
+
             val token = "Bearer ${userLoginPref.getLoginData().token}"
             val service = WebService.create().uploadStory(token, imageMultipart, description)
+            addStoryViewModel.uploadStory(token, imageMultipart, description)
             service.enqueue(object : Callback<AddStoryResponse> {
                 override fun onResponse(
                     call: Call<AddStoryResponse>,

@@ -14,6 +14,8 @@ class Preferences(context: Context) {
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     private val editor = pref.edit()
 
+
+
     fun setUserLogin(auth: AuthSession) {
         editor.apply {
             putString(NAME_KEY, auth.name)
@@ -42,4 +44,5 @@ class Preferences(context: Context) {
             pref.getBoolean(STATE_KEY, false)
         )
     }
+
 }

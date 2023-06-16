@@ -2,7 +2,6 @@ package com.sirdev.storyapp.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.bumptech.glide.Glide
 import com.sirdev.storyapp.databinding.ActivityDetailBinding
 
